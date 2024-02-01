@@ -53,8 +53,12 @@ public extension UICollectionView {
         collectionViewLayout = layout
     }
 
-    func setCompositionalLayout(layoutSize: NSCollectionLayoutSize, contentInsets: NSDirectionalEdgeInsets? = nil, scrollDirection: ScrollDirection = .horizontal) {
-        let section = createLayoutSection(layoutSize: layoutSize, contentInsets: contentInsets)
+    func setCompositionalLayout(layoutSize: NSCollectionLayoutSize,
+                                itemSpacing: CGFloat? = nil,
+                                groupSpacing: CGFloat? = nil,
+                                contentInsets: NSDirectionalEdgeInsets? = nil,
+                                scrollDirection: ScrollDirection = .horizontal) {
+        let section = createLayoutSection(layoutSize: layoutSize, itemSpacing: itemSpacing, groupSpacing: groupSpacing, contentInsets: contentInsets)
         
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         configuration.scrollDirection = scrollDirection
