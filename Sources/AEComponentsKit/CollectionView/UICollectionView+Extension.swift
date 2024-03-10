@@ -54,11 +54,15 @@ public extension UICollectionView {
     }
 
     func setCompositionalLayout(layoutSize: NSCollectionLayoutSize,
+                                headerHeight: NSCollectionLayoutDimension? = nil,
                                 itemSpacing: CGFloat? = nil,
                                 groupSpacing: CGFloat? = nil,
                                 contentInsets: NSDirectionalEdgeInsets? = nil,
                                 scrollDirection: ScrollDirection = .horizontal) {
         let section = createLayoutSection(layoutSize: layoutSize, itemSpacing: itemSpacing, groupSpacing: groupSpacing, contentInsets: contentInsets)
+        if let headerHeight = headerHeight {
+            section.setSupplementaryHeader(heightDimension: headerHeight)
+        }
         
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         configuration.scrollDirection = scrollDirection
