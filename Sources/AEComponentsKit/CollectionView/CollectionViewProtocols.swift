@@ -30,6 +30,10 @@ public protocol CollectionViewHeaderProtocol: AnyObject {
     func headerView(for indexPath: IndexPath) -> UICollectionReusableView?
 }
 
+public protocol CollectionViewScrollProtocol: AnyObject {
+    func didScroll(to offset: CGFloat)
+}
+
 public protocol CollectionViewFooterProtocol: AnyObject {
     func footerView(for indexPath: IndexPath) -> UICollectionReusableView?
 }

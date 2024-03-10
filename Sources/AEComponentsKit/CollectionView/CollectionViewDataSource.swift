@@ -14,16 +14,19 @@ public class CollectionViewDataSource: NSObject {
     private let cell: CollectionViewCellProtocol
     private let header: CollectionViewHeaderProtocol?
     private let footer: CollectionViewFooterProtocol?
+    private let scroll: CollectionViewScrollProtocol?
     private let display: CollectionViewDisplayProtocol?
 
     // MARK: Initializer
     public init(cell: CollectionViewCellProtocol,
                 header: CollectionViewHeaderProtocol? = nil,
                 footer: CollectionViewFooterProtocol? = nil,
+                scroll: CollectionViewScrollProtocol? = nil,
                 display: CollectionViewDisplayProtocol? = nil) {
         self.cell = cell
         self.header = header
         self.footer = footer
+        self.scroll = scroll
         self.display = display
     }
 }
@@ -73,5 +76,9 @@ extension CollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDe
 
     public func collectionView(_: UICollectionView, willDisplay _: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         display?.willDisplay(for: indexPath)
+    }
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scroll?.didScroll(to: scrollView.contentOffset.y)
     }
 }
