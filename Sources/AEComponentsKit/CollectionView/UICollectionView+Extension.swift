@@ -59,8 +59,9 @@ public extension UICollectionView {
                                 groupSpacing: CGFloat? = nil,
                                 contentInsets: NSDirectionalEdgeInsets? = nil,
                                 scrollDirection: ScrollDirection = .horizontal,
+                                scrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior? = nil,
                                 columnCount: Int? = nil) {
-        let section = createLayoutSection(layoutSize: layoutSize, itemSpacing: itemSpacing, groupSpacing: groupSpacing, contentInsets: contentInsets, columnCount: columnCount)
+        let section = createLayoutSection(layoutSize: layoutSize, itemSpacing: itemSpacing, groupSpacing: groupSpacing, contentInsets: contentInsets, scrollingBehavior: scrollingBehavior, columnCount: columnCount)
         if let headerHeight = headerHeight {
             section.setSupplementaryHeader(heightDimension: headerHeight)
         }
