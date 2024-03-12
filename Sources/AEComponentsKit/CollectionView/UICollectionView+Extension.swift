@@ -58,8 +58,9 @@ public extension UICollectionView {
                                 itemSpacing: CGFloat? = nil,
                                 groupSpacing: CGFloat? = nil,
                                 contentInsets: NSDirectionalEdgeInsets? = nil,
-                                scrollDirection: ScrollDirection = .horizontal) {
-        let section = createLayoutSection(layoutSize: layoutSize, itemSpacing: itemSpacing, groupSpacing: groupSpacing, contentInsets: contentInsets)
+                                scrollDirection: ScrollDirection = .horizontal,
+                                columnCount: Int? = nil) {
+        let section = createLayoutSection(layoutSize: layoutSize, itemSpacing: itemSpacing, groupSpacing: groupSpacing, contentInsets: contentInsets, columnCount: columnCount)
         if let headerHeight = headerHeight {
             section.setSupplementaryHeader(heightDimension: headerHeight)
         }
@@ -76,9 +77,10 @@ public extension UICollectionView {
                              itemSpacing: CGFloat? = nil,
                              groupSpacing: CGFloat? = nil,
                              contentInsets: NSDirectionalEdgeInsets? = nil,
-                             scrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior? = nil) -> NSCollectionLayoutSection {
+                             scrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior? = nil,
+                             columnCount: Int? = nil) -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(
-            widthDimension: layoutSize.widthDimension.isEstimated ? layoutSize.widthDimension : .fractionalWidth(1),
+            widthDimension: layoutSize.widthDimension.isEstimated ? layoutSize.widthDimension : .fractionalWidth(1.0 / (CGFloat(columnCount ?? 1))),
             heightDimension: isHorizontal ? layoutSize.heightDimension : .fractionalHeight(0.5))
         )
         
@@ -87,9 +89,10 @@ public extension UICollectionView {
             group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize, subitems: [item])
         } else {
             group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize, subitems: [item])
-            if let itemSpacing = itemSpacing {
-                group.interItemSpacing = .fixed(itemSpacing)
-            }
+        }
+        
+        if let itemSpacing = itemSpacing {
+            group.interItemSpacing = .fixed(itemSpacing)
         }
         
         let section = NSCollectionLayoutSection(group: group)
