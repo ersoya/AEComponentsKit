@@ -38,12 +38,12 @@ extension CollectionViewDataSource: UICollectionViewDataSource {
         cell.numberOfSections()
     }
     
-    public func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        cell.numberOfItems(in: section)
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        cell.numberOfItems(in: section, collectionView: collectionView)
     }
 
-    public func collectionView(_: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = cell.cellForItem(at: indexPath) else {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = cell.cellForItem(at: indexPath, collectionView: collectionView) else {
             return .init()
         }
         return cell
@@ -70,8 +70,8 @@ extension CollectionViewDataSource: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 extension CollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
-    public func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        cell.didSelectItem(at: indexPath)
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        cell.didSelectItem(at: indexPath, collectionView: collectionView)
     }
 
     public func collectionView(_: UICollectionView, willDisplay _: UICollectionViewCell, forItemAt indexPath: IndexPath) {

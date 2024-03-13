@@ -10,9 +10,10 @@ import UIKit
 
 public protocol CollectionViewCellProtocol: AnyObject {
     func numberOfSections() -> Int
-    func numberOfItems(in section: Int) -> Int
-    func cellForItem(at indexPath: IndexPath) -> UICollectionViewCell?
-    func didSelectItem(at indexPath: IndexPath)
+    
+    func numberOfItems(in section: Int, collectionView: UICollectionView) -> Int
+    func cellForItem(at indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell?
+    func didSelectItem(at indexPath: IndexPath, collectionView: UICollectionView)
 }
 
 public extension CollectionViewCellProtocol {
@@ -21,7 +22,7 @@ public extension CollectionViewCellProtocol {
         1
     }
     
-    func didSelectItem(at indexPath: IndexPath) {
+    func didSelectItem(at indexPath: IndexPath, collectionView: UICollectionView) {
         
     }
 }
