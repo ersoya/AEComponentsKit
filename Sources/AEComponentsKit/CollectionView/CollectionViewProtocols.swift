@@ -33,6 +33,18 @@ public protocol CollectionViewHeaderProtocol: AnyObject {
 
 public protocol CollectionViewScrollProtocol: AnyObject {
     func didScroll(to offset: CGFloat)
+    func didEndDecelerating(_ scrollView: UIScrollView)
+}
+
+public extension CollectionViewScrollProtocol {
+    
+    func didScroll(to offset: CGFloat) {
+        
+    }
+    
+    func didEndDecelerating(_ scrollView: UIScrollView) {
+        
+    }
 }
 
 public protocol CollectionViewFooterProtocol: AnyObject {

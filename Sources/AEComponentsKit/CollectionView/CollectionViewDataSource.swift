@@ -81,4 +81,8 @@ extension CollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDe
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scroll?.didScroll(to: scrollView.contentOffset.y)
     }
+    
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scroll?.didEndDecelerating(scrollView)
+    }
 }
