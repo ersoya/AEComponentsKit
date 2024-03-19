@@ -54,7 +54,7 @@ public extension UICollectionView {
     }
 
     func setCompositionalLayout(layoutSize: NSCollectionLayoutSize,
-                                headerHeight: NSCollectionLayoutDimension? = nil,
+                                headerLayout: NSCollectionLayoutSize? = nil,
                                 itemSpacing: CGFloat? = nil,
                                 groupSpacing: CGFloat? = nil,
                                 contentInsets: NSDirectionalEdgeInsets? = nil,
@@ -62,8 +62,8 @@ public extension UICollectionView {
                                 scrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior? = nil,
                                 columnCount: Int? = nil) {
         let section = createLayoutSection(layoutSize: layoutSize, itemSpacing: itemSpacing, groupSpacing: groupSpacing, contentInsets: contentInsets, scrollingBehavior: scrollingBehavior, columnCount: columnCount)
-        if let headerHeight = headerHeight {
-            section.setSupplementaryHeader(heightDimension: headerHeight)
+        if let headerLayout = headerLayout {
+            section.setSupplementaryHeader(headerLayout: headerLayout)
         }
         
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
@@ -110,10 +110,9 @@ public extension UICollectionView {
 
 public extension NSCollectionLayoutSection {
     
-    func setSupplementaryHeader(heightDimension: NSCollectionLayoutDimension) {
-        let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: heightDimension)
+    func setSupplementaryHeader(headerLayout: NSCollectionLayoutSize) {
         let supplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: layoutSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top
+            layoutSize: headerLayout, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top
         )
         boundarySupplementaryItems = [supplementaryItem]
     }
