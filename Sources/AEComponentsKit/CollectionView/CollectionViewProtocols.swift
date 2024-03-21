@@ -53,4 +53,12 @@ public protocol CollectionViewFooterProtocol: AnyObject {
 
 public protocol CollectionViewDisplayProtocol: AnyObject {
     func willDisplay(for indexPath: IndexPath)
+    func didEndDisplaying(for indexPath: IndexPath)
+}
+
+public extension CollectionViewDisplayProtocol {
+    
+    func didEndDisplaying(for indexPath: IndexPath) {
+        
+    }
 }

@@ -78,6 +78,10 @@ extension CollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDe
         display?.willDisplay(for: indexPath)
     }
     
+    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        display?.didEndDisplaying(for: indexPath)
+    }
+    
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scroll?.didScroll(to: scrollView.contentOffset.y)
     }
