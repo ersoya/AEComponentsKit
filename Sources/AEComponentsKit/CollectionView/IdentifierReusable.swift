@@ -19,7 +19,6 @@ public extension IdentifierReusable {
 }
 
 extension UICollectionReusableView: IdentifierReusable {}
-
 public extension UICollectionReusableView {
     static func nib(in bundle: Bundle) -> UINib {
         UINib(nibName: Self.reuseIdentifier, bundle: bundle)
@@ -29,5 +28,13 @@ public extension UICollectionReusableView {
 public extension String {
     func nib(in bundle: Bundle) -> UINib {
         UINib(nibName: self, bundle: bundle)
+    }
+}
+
+extension UITableViewCell: IdentifierReusable {}
+//extension UIView: IdentifierReusable {}
+public extension UITableViewCell {
+    static func nib(in bundle: Bundle) -> UINib {
+        UINib(nibName: Self.reuseIdentifier, bundle: bundle)
     }
 }
