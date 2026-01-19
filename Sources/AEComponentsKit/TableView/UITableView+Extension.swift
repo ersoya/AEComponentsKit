@@ -10,6 +10,10 @@ import UIKit
 
 public extension UITableView {
 
+    func registerCell<T: UITableViewCell>(for cell: T.Type) {
+        register(cell.self, forCellReuseIdentifier: cell.reuseIdentifier)
+    }
+    
     func registerCell(for reuseIdentifier: String, in bundle: Bundle) {
         register(reuseIdentifier.nib(in: bundle), forCellReuseIdentifier: reuseIdentifier)
     }

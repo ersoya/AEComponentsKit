@@ -5,6 +5,7 @@
 //  Created by Arda Ersoy on 13.01.2026.
 //
 
+import Foundation
 import UIKit
 import Combine
 
@@ -15,7 +16,6 @@ open class TableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
-        setupConstraints()
         addObservables()
     }
     
@@ -26,7 +26,6 @@ open class TableViewCell: UITableViewCell {
     open override func awakeFromNib() {
         super.awakeFromNib()
         setupSubviews()
-        setupConstraints()
         addObservables()
     }
     
@@ -39,8 +38,6 @@ open class TableViewCell: UITableViewCell {
     open func setupSubviews() {
         selectionStyle = .none
     }
-    
-    open func setupConstraints() {}
     
     open func addObservables() {}
 }
